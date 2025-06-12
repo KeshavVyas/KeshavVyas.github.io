@@ -1,0 +1,35 @@
+/* styles.css */
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 2rem auto;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+header, section {
+  margin-bottom: 2rem;
+}
+header h1 {
+  margin-bottom: 0.2rem;
+}
+header p a {
+  text-decoration: none;
+  color: #0366d6;
+}
+h2 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ul li {
+  margin-bottom: 1rem;
+}
+footer {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
