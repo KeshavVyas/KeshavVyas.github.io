@@ -1,0 +1,38 @@
+{
+  "name": "sanjay-vyas-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Sanjay Vyas",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your preferred hosting service'"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "developer",
+    "software-engineer",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "author": "Sanjay Vyas",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanjayvyas/portfolio.git"
+  },
+  "homepage": "https://sanjayvyas.github.io",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
