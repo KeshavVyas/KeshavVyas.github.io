@@ -1,0 +1,17 @@
+{
+  "title": "Job Title",
+  "company": "Company Name",
+  "date": "2023 - Present",
+  "description": "Brief description of your role and responsibilities",
+  "achievements": [
+    "Key achievement or responsibility 1",
+    "Key achievement or responsibility 2",
+    "Key achievement or responsibility 3"
+  ],
+  "technologies": ["Technology1", "Technology2", "Technology3"],
+  "location": "City, State/Country",
+  "type": "full-time",
+  "featured": true,
+  "companyUrl": "https://company-website.com",
+  "logo": "company-logo.png"
+}

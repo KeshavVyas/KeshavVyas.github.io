@@ -509,6 +509,19 @@ section {
     font-weight: bold;
 }
 
+.timeline-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+}
+
+.timeline-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
 /* Projects Section */
 .projects {
     background-color: var(--background-alt);

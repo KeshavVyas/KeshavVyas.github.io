@@ -1,0 +1,17 @@
+{
+  "title": "Junior Developer",
+  "company": "Startup",
+  "date": "2021 - 2022",
+  "description": "Frontend developer focused on creating responsive user interfaces and optimizing application performance",
+  "achievements": [
+    "Built responsive user interfaces using modern frameworks",
+    "Optimized application performance and user experience",
+    "Participated in agile development processes"
+  ],
+  "technologies": ["JavaScript", "React", "CSS3", "HTML5"],
+  "location": "Remote",
+  "type": "full-time",
+  "featured": true,
+  "companyUrl": "https://startup.com",
+  "logo": "startup-logo.png"
+}

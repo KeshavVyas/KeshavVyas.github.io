@@ -4,10 +4,14 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const projectsGrid = document.getElementById('projects-grid');
+const experienceTimeline = document.querySelector('.timeline');
 const contactForm = document.getElementById('contact-form');
 
 // Projects will be loaded dynamically from JSON files
 let projects = [];
+
+// Experience will be loaded dynamically from JSON files
+let experience = [];
 
 // Load projects from JSON files
 async function loadProjectsFromFiles() {
@@ -48,6 +52,87 @@ async function loadProjectsFromFiles() {
         // Fallback to sample projects if loading fails
         projects = getFallbackProjects();
     }
+}
+
+// Load experience from JSON files
+async function loadExperienceFromFiles() {
+    try {
+        const experienceFiles = [
+            'experience/software-engineer.json',
+            'experience/junior-developer.json'
+        ];
+
+        const experiencePromises = experienceFiles.map(async (file) => {
+            try {
+                const response = await fetch(file);
+                if (response.ok) {
+                    return await response.json();
+                } else {
+                    console.warn(`Failed to load ${file}`);
+                    return null;
+                }
+            } catch (error) {
+                console.warn(`Error loading ${file}:`, error);
+                return null;
+            }
+        });
+
+        const loadedExperience = await Promise.all(experiencePromises);
+        experience = loadedExperience.filter(exp => exp !== null);
+        
+        // Sort experience by date (newest first)
+        experience.sort((a, b) => {
+            const dateA = a.date.includes('Present') ? new Date() : new Date(a.date.split(' - ')[1]);
+            const dateB = b.date.includes('Present') ? new Date() : new Date(b.date.split(' - ')[1]);
+            return dateB - dateA;
+        });
+        
+        console.log('Experience loaded:', experience.length);
+    } catch (error) {
+        console.error('Error loading experience:', error);
+        // Fallback to sample experience if loading fails
+        experience = getFallbackExperience();
+    }
+}
+
+// Fallback experience in case JSON loading fails
+function getFallbackExperience() {
+    return [
+        {
+            title: "Software Engineer",
+            company: "Tech Company",
+            date: "2022 - Present",
+            description: "Full-stack software engineer responsible for developing and maintaining scalable web applications",
+            achievements: [
+                "Developed and maintained scalable web applications",
+                "Collaborated with cross-functional teams to deliver high-quality software",
+                "Implemented best practices for code quality and performance"
+            ],
+            technologies: ["React", "Node.js", "MongoDB", "AWS"],
+            location: "San Francisco, CA",
+            type: "full-time",
+            featured: true,
+            companyUrl: "https://techcompany.com",
+            logo: "tech-company-logo.png"
+        },
+        {
+            title: "Junior Developer",
+            company: "Startup",
+            date: "2021 - 2022",
+            description: "Frontend developer focused on creating responsive user interfaces and optimizing application performance",
+            achievements: [
+                "Built responsive user interfaces using modern frameworks",
+                "Optimized application performance and user experience",
+                "Participated in agile development processes"
+            ],
+            technologies: ["JavaScript", "React", "CSS3", "HTML5"],
+            location: "Remote",
+            type: "full-time",
+            featured: true,
+            companyUrl: "https://startup.com",
+            logo: "startup-logo.png"
+        }
+    ];
 }
 
 // Fallback projects in case JSON loading fails
@@ -187,6 +272,23 @@ async function loadProjects() {
     });
 }
 
+// Load experience dynamically
+async function loadExperience() {
+    if (!experienceTimeline) return;
+
+    // Load experience from JSON files first
+    await loadExperienceFromFiles();
+    
+    // Clear existing timeline content
+    experienceTimeline.innerHTML = '';
+    
+    // Create timeline items for each experience entry
+    experience.forEach(exp => {
+        const timelineItem = createTimelineItem(exp);
+        experienceTimeline.appendChild(timelineItem);
+    });
+}
+
 // Create project card element
 function createProjectCard(project) {
     const card = document.createElement('div');
@@ -214,6 +316,29 @@ function createProjectCard(project) {
     `;
     
     return card;
+}
+
+// Create timeline item element
+function createTimelineItem(exp) {
+    const timelineItem = document.createElement('div');
+    timelineItem.className = 'timeline-item fade-in-up';
+    
+    timelineItem.innerHTML = `
+        <div class="timeline-content">
+            <h3>${exp.title}</h3>
+            <h4>${exp.company}</h4>
+            <p class="timeline-date">${exp.date}</p>
+            <p class="timeline-description">${exp.description}</p>
+            <ul>
+                ${exp.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+            </ul>
+            <div class="timeline-tech">
+                ${exp.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+            </div>
+        </div>
+    `;
+    
+    return timelineItem;
 }
 
 // Contact form handling
@@ -396,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all functionality
     initNavigation();
     loadProjects().catch(console.error);
+    loadExperience().catch(console.error);
     initContactForm();
     initAnimations();
     initTypingEffect();

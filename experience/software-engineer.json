@@ -1,0 +1,17 @@
+{
+  "title": "Software Engineer",
+  "company": "Tech Company",
+  "date": "2022 - Present",
+  "description": "Full-stack software engineer responsible for developing and maintaining scalable web applications",
+  "achievements": [
+    "Developed and maintained scalable web applications",
+    "Collaborated with cross-functional teams to deliver high-quality software",
+    "Implemented best practices for code quality and performance"
+  ],
+  "technologies": ["React", "Node.js", "MongoDB", "AWS"],
+  "location": "San Francisco, CA",
+  "type": "full-time",
+  "featured": true,
+  "companyUrl": "https://techcompany.com",
+  "logo": "tech-company-logo.png"
+}

@@ -20,6 +20,27 @@ A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript. T
 - A modern web browser
 - Basic knowledge of HTML, CSS, and JavaScript (for customization)
 
+### Quick Update (Recommended)
+
+Use the comprehensive update script to manage your portfolio:
+
+```bash
+# Update everything and push to GitHub
+./update.sh "Your commit message"
+
+# Or just update without a custom message
+./update.sh
+```
+
+This script will:
+
+1. ✅ Validate all JSON files
+2. ✅ Check for new project/experience files
+3. ✅ Verify script.js references
+4. ✅ Build and test the website
+5. ✅ Commit and push changes to GitHub
+6. ✅ Show deployment status
+
 ### Installation
 
 1. **Clone or Download**
@@ -57,12 +78,20 @@ portfolio/
 ├── .gitignore          # Git ignore file
 ├── README.md           # This file
 ├── add-project.sh      # Script to add new projects
+├── add-experience.sh   # Script to add new experience entries
+├── update.sh           # Complete update and deployment script
 ├── projects/           # Project JSON files
 │   ├── README.md       # Project documentation
 │   ├── template.json   # Template for new projects
 │   ├── ecommerce-platform.json
 │   ├── task-manager.json
 │   └── ...             # More project files
+├── experience/         # Experience JSON files
+│   ├── README.md       # Experience documentation
+│   ├── template.json   # Template for new experience entries
+│   ├── software-engineer.json
+│   ├── junior-developer.json
+│   └── ...             # More experience files
 └── assets/             # Images and other assets
     ├── favicon.ico     # Website favicon
     ├── profile.jpg     # Profile image (optional)
@@ -127,7 +156,55 @@ This will:
 
 Add project screenshots to `assets/projects/` and reference them in the `image` field.
 
-### 3. Skills
+### 3. Experience
+
+#### Quick Add (Recommended)
+
+Use the provided script to add new experience entries:
+
+```bash
+./add-experience.sh "Company Name"
+```
+
+This will:
+
+1. Create a new JSON file in the `experience/` directory
+2. Use the template with all required fields
+3. Generate a proper filename automatically
+
+#### Manual Add
+
+1. **Copy the template**:
+
+   ```bash
+   cp experience/template.json experience/your-company-name.json
+   ```
+
+2. **Edit the experience file** with your details:
+
+   ```json
+   {
+     "title": "Your Job Title",
+     "company": "Your Company Name",
+     "date": "2023 - Present",
+     "description": "Brief role description",
+     "achievements": ["Achievement 1", "Achievement 2"],
+     "technologies": ["Tech1", "Tech2"],
+     "location": "City, State/Country",
+     "type": "full-time",
+     "featured": true,
+     "companyUrl": "https://company-website.com",
+     "logo": "company-logo.png"
+   }
+   ```
+
+3. **Add to script.js**: Add your new file to the `experienceFiles` array in `loadExperienceFromFiles()`
+
+#### Company Logos
+
+Add company logos to `assets/companies/` and reference them in the `logo` field.
+
+### 4. Skills
 
 Modify the skills section in `index.html`:
 
@@ -138,7 +215,7 @@ Modify the skills section in `index.html`:
 </div>
 ```
 
-### 4. Colors and Styling
+### 5. Colors and Styling
 
 Customize the color scheme in `styles.css`:
 
@@ -151,7 +228,7 @@ Customize the color scheme in `styles.css`:
 }
 ```
 
-### 5. Contact Form
+### 6. Contact Form
 
 The contact form is currently set up for demonstration. To make it functional:
 
