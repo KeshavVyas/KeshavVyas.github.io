@@ -82,8 +82,38 @@ async function loadExperienceFromFiles() {
         
         // Sort experience by date (newest first)
         experience.sort((a, b) => {
-            const dateA = a.date.includes('Present') ? new Date() : new Date(a.date.split(' - ')[1]);
-            const dateB = b.date.includes('Present') ? new Date() : new Date(b.date.split(' - ')[1]);
+            const getDateValue = (dateStr) => {
+                if (dateStr.includes('Present')) return new Date();
+                
+                const parts = dateStr.split(' - ');
+                const endDate = parts[1] || parts[0];
+                
+                // Handle different date formats
+                if (endDate.match(/^\d{4}$/)) {
+                    // Year only: "2022"
+                    return new Date(endDate, 11, 31); // End of year
+                } else if (endDate.match(/^[A-Za-z]+ \d{4}$/)) {
+                    // Month Year: "Jan 2022" or "January 2022"
+                    return new Date(endDate);
+                } else if (endDate.match(/^\d{1,2}\/\d{4}$/)) {
+                    // MM/YYYY: "01/2022"
+                    const [month, year] = endDate.split('/');
+                    return new Date(year, month - 1, 1);
+                } else if (endDate.match(/^\d{4}-\d{1,2}$/)) {
+                    // YYYY-MM: "2022-01"
+                    return new Date(endDate + '-01');
+                } else if (endDate.match(/^\d{4}\.\d{1,2}$/)) {
+                    // YYYY.MM: "2022.01"
+                    const [year, month] = endDate.split('.');
+                    return new Date(year, month - 1, 1);
+                } else {
+                    // Try parsing as is
+                    return new Date(endDate);
+                }
+            };
+            
+            const dateA = getDateValue(a.date);
+            const dateB = getDateValue(b.date);
             return dateB - dateA;
         });
         

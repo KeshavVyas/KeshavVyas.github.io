@@ -1,0 +1,15 @@
+{
+  "title": "Example with Detailed Dates",
+  "company": "Example Company",
+  "date": "Jan 2023 - Present",
+  "description": "This shows how to use month and year format for current jobs",
+  "achievements": [
+    "Example achievement with detailed date format"
+  ],
+  "technologies": ["Example"],
+  "location": "Example Location",
+  "type": "full-time",
+  "featured": false,
+  "companyUrl": "https://example.com",
+  "logo": "example-logo.png"
+}

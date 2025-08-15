@@ -48,7 +48,7 @@ Open your new JSON file and update the following fields:
 |-------|-------------|---------|
 | `title` | Your job title | "Software Engineer" |
 | `company` | Company name | "Google" |
-| `date` | Employment period | "2022 - Present" |
+| `date` | Employment period | "2022 - Present", "Jan 2022 - Dec 2023", "01/2022 - 12/2023" |
 | `description` | Brief role description | "Full-stack developer..." |
 | `achievements` | Array of key achievements | `["Built scalable apps", "Led team of 5"]` |
 | `technologies` | Technologies used | `["React", "Node.js", "MongoDB"]` |
@@ -108,6 +108,25 @@ Experience entries are automatically loaded and displayed on your portfolio webs
 - **JSON errors**: Validate your JSON syntax using a JSON validator
 - **Date format**: Use "YYYY - Present" for current jobs, "YYYY - YYYY" for past jobs
 
+## 📅 Date Formats
+
+The system supports various date formats for flexible experience tracking:
+
+### **Supported Formats:**
+- `"2022 - Present"` - Current job (year only)
+- `"2021 - 2022"` - Past job (year range)
+- `"Jan 2022 - Present"` - Current job with month
+- `"January 2022 - Dec 2023"` - Full month names
+- `"01/2022 - 12/2023"` - Month/Year format
+- `"2022-01 - 2023-12"` - ISO-like format
+- `"2022.01 - 2023.12"` - Alternative format
+
+### **Sorting Logic:**
+- Experience is automatically sorted by end date (newest first)
+- "Present" is treated as current date
+- Year-only dates are treated as end of year
+- Month formats are parsed correctly for accurate sorting
+
 ## 📊 Best Practices
 
 1. **Keep it current**: Update experience regularly
@@ -115,3 +134,4 @@ Experience entries are automatically loaded and displayed on your portfolio webs
 3. **Show progression**: Demonstrate career growth
 4. **Highlight achievements**: Focus on impact, not just tasks
 5. **Use consistent formatting**: Follow the template structure
+6. **Use detailed dates**: Include months for more precise timeline
