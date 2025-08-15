@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sanjayvyas.github.io/sitemap.xml
+Sitemap: https://keshavvyas.github.io/sitemap.xml
 
 # Disallow sensitive files
 Disallow: /assets/

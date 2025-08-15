@@ -25,7 +25,7 @@ A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript. T
 1. **Clone or Download**
 
    ```bash
-   git clone https://github.com/sanjayvyas/portfolio.git
+   git clone https://github.com/keshavvyas/portfolio.git
    cd portfolio
    ```
 

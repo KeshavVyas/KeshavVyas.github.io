@@ -1,5 +1,5 @@
 {
-  "name": "sanjay-vyas-portfolio",
+  "name": "keshav-vyas-portfolio",
   "version": "1.0.0",
   "description": "Professional portfolio website for Keshav Vyas",
   "main": "index.html",
@@ -22,9 +22,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanjayvyas/portfolio.git"
+    "url": "https://github.com/keshavvyas/portfolio.git"
   },
-  "homepage": "https://sanjayvyas.github.io",
+      "homepage": "https://keshavvyas.github.io",
   "devDependencies": {},
   "dependencies": {},
   "engines": {
