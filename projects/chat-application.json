@@ -1,0 +1,13 @@
+{
+  "title": "Chat Application",
+  "description": "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+  "technologies": ["React", "Socket.io", "Express", "MongoDB"],
+  "github": "https://github.com/keshavvyas/chat-app",
+  "live": "https://chat-demo.com",
+  "icon": "fas fa-comments",
+  "featured": true,
+  "date": "2024-08-25",
+  "category": "web-app",
+  "image": "chat-screenshot.jpg",
+  "tags": ["real-time", "messaging", "websockets"]
+}

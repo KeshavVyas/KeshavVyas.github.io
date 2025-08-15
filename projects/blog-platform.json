@@ -1,0 +1,13 @@
+{
+  "title": "Blog Platform",
+  "description": "A content management system for blogs with markdown support, user authentication, and admin dashboard.",
+  "technologies": ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS"],
+  "github": "https://github.com/keshavvyas/blog-platform",
+  "live": "https://blog-demo.com",
+  "icon": "fas fa-blog",
+  "featured": true,
+  "date": "2024-09-10",
+  "category": "web-app",
+  "image": "blog-screenshot.jpg",
+  "tags": ["cms", "markdown", "fullstack"]
+}

@@ -6,57 +6,127 @@ const navLinks = document.querySelectorAll('.nav-link');
 const projectsGrid = document.getElementById('projects-grid');
 const contactForm = document.getElementById('contact-form');
 
-// Sample projects data - you can replace this with your actual projects
-const projects = [
-    {
-        title: "E-Commerce Platform",
-        description: "A full-stack e-commerce application built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-        github: "https://github.com/sanjayvyas/ecommerce-platform",
-        live: "https://ecommerce-demo.com",
-        icon: "fas fa-shopping-cart"
-    },
-    {
-        title: "Task Management App",
-        description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-        technologies: ["React", "Firebase", "Material-UI", "Socket.io"],
-        github: "https://github.com/sanjayvyas/task-manager",
-        live: "https://task-manager-demo.com",
-        icon: "fas fa-tasks"
-    },
-    {
-        title: "Weather Dashboard",
-        description: "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
-        technologies: ["JavaScript", "HTML5", "CSS3", "Chart.js"],
-        github: "https://github.com/sanjayvyas/weather-dashboard",
-        live: "https://weather-demo.com",
-        icon: "fas fa-cloud-sun"
-    },
-    {
-        title: "Portfolio Website",
-        description: "A responsive portfolio website built with modern web technologies, featuring smooth animations and professional design.",
-        technologies: ["HTML5", "CSS3", "JavaScript", "Font Awesome"],
-        github: "https://github.com/sanjayvyas/portfolio",
-        live: "https://sanjayvyas.github.io",
-        icon: "fas fa-user"
-    },
-    {
-        title: "Blog Platform",
-        description: "A content management system for blogs with markdown support, user authentication, and admin dashboard.",
-        technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS"],
-        github: "https://github.com/sanjayvyas/blog-platform",
-        live: "https://blog-demo.com",
-        icon: "fas fa-blog"
-    },
-    {
-        title: "Chat Application",
-        description: "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-        technologies: ["React", "Socket.io", "Express", "MongoDB"],
-        github: "https://github.com/sanjayvyas/chat-app",
-        live: "https://chat-demo.com",
-        icon: "fas fa-comments"
+// Projects will be loaded dynamically from JSON files
+let projects = [];
+
+// Load projects from JSON files
+async function loadProjectsFromFiles() {
+    try {
+        const projectFiles = [
+            'projects/ecommerce-platform.json',
+            'projects/task-manager.json',
+            'projects/weather-dashboard.json',
+            'projects/portfolio-website.json',
+            'projects/blog-platform.json',
+            'projects/chat-application.json'
+        ];
+
+        const projectPromises = projectFiles.map(async (file) => {
+            try {
+                const response = await fetch(file);
+                if (response.ok) {
+                    return await response.json();
+                } else {
+                    console.warn(`Failed to load ${file}`);
+                    return null;
+                }
+            } catch (error) {
+                console.warn(`Error loading ${file}:`, error);
+                return null;
+            }
+        });
+
+        const loadedProjects = await Promise.all(projectPromises);
+        projects = loadedProjects.filter(project => project !== null);
+        
+        // Sort projects by date (newest first)
+        projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        console.log('Projects loaded:', projects.length);
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        // Fallback to sample projects if loading fails
+        projects = getFallbackProjects();
     }
-];
+}
+
+// Fallback projects in case JSON loading fails
+function getFallbackProjects() {
+    return [
+        {
+            title: "E-Commerce Platform",
+            description: "A full-stack e-commerce application built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
+            technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+            github: "https://github.com/keshavvyas/ecommerce-platform",
+            live: "https://ecommerce-demo.com",
+            icon: "fas fa-shopping-cart",
+            featured: true,
+            date: "2024-12-01",
+            category: "web-app",
+            tags: ["fullstack", "ecommerce", "payment"]
+        },
+        {
+            title: "Task Management App",
+            description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+            technologies: ["React", "Firebase", "Material-UI", "Socket.io"],
+            github: "https://github.com/keshavvyas/task-manager",
+            live: "https://task-manager-demo.com",
+            icon: "fas fa-tasks",
+            featured: true,
+            date: "2024-11-15",
+            category: "web-app",
+            tags: ["collaboration", "real-time", "productivity"]
+        },
+        {
+            title: "Weather Dashboard",
+            description: "A weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful visualizations.",
+            technologies: ["JavaScript", "HTML5", "CSS3", "Chart.js"],
+            github: "https://github.com/keshavvyas/weather-dashboard",
+            live: "https://weather-demo.com",
+            icon: "fas fa-cloud-sun",
+            featured: true,
+            date: "2024-10-20",
+            category: "web-app",
+            tags: ["api", "visualization", "frontend"]
+        },
+        {
+            title: "Portfolio Website",
+            description: "A responsive portfolio website built with modern web technologies, featuring smooth animations and professional design.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "Font Awesome"],
+            github: "https://github.com/keshavvyas/portfolio",
+            live: "https://keshavvyas.github.io",
+            icon: "fas fa-user",
+            featured: true,
+            date: "2024-12-19",
+            category: "website",
+            tags: ["portfolio", "responsive", "design"]
+        },
+        {
+            title: "Blog Platform",
+            description: "A content management system for blogs with markdown support, user authentication, and admin dashboard.",
+            technologies: ["Next.js", "PostgreSQL", "Prisma", "Tailwind CSS"],
+            github: "https://github.com/keshavvyas/blog-platform",
+            live: "https://blog-demo.com",
+            icon: "fas fa-blog",
+            featured: true,
+            date: "2024-09-10",
+            category: "web-app",
+            tags: ["cms", "markdown", "fullstack"]
+        },
+        {
+            title: "Chat Application",
+            description: "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
+            technologies: ["React", "Socket.io", "Express", "MongoDB"],
+            github: "https://github.com/keshavvyas/chat-app",
+            live: "https://chat-demo.com",
+            icon: "fas fa-comments",
+            featured: true,
+            date: "2024-08-25",
+            category: "web-app",
+            tags: ["real-time", "messaging", "websockets"]
+        }
+    ];
+}
 
 // Navigation functionality
 function initNavigation() {
@@ -102,10 +172,16 @@ function initNavigation() {
 }
 
 // Load projects dynamically
-function loadProjects() {
+async function loadProjects() {
     if (!projectsGrid) return;
 
-    projects.forEach(project => {
+    // Load projects from JSON files first
+    await loadProjectsFromFiles();
+    
+    // Filter to show only featured projects on homepage
+    const featuredProjects = projects.filter(project => project.featured);
+    
+    featuredProjects.forEach(project => {
         const projectCard = createProjectCard(project);
         projectsGrid.appendChild(projectCard);
     });
@@ -319,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize all functionality
     initNavigation();
-    loadProjects();
+    loadProjects().catch(console.error);
     initContactForm();
     initAnimations();
     initTypingEffect();

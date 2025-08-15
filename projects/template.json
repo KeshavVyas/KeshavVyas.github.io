@@ -1,0 +1,13 @@
+{
+  "title": "Project Title",
+  "description": "A brief description of your project. Explain what it does, what problems it solves, and what makes it special.",
+  "technologies": ["Technology1", "Technology2", "Technology3"],
+  "github": "https://github.com/keshavvyas/project-name",
+  "live": "https://project-demo.com",
+  "icon": "fas fa-code",
+  "featured": true,
+  "date": "2024-12-19",
+  "category": "web-app",
+  "image": "project-screenshot.jpg",
+  "tags": ["frontend", "backend", "fullstack"]
+}

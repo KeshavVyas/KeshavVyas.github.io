@@ -1,0 +1,13 @@
+{
+  "title": "Portfolio Website",
+  "description": "A responsive portfolio website built with modern web technologies, featuring smooth animations and professional design.",
+  "technologies": ["HTML5", "CSS3", "JavaScript", "Font Awesome"],
+  "github": "https://github.com/keshavvyas/portfolio",
+  "live": "https://keshavvyas.github.io",
+  "icon": "fas fa-user",
+  "featured": true,
+  "date": "2024-12-19",
+  "category": "website",
+  "image": "portfolio-screenshot.jpg",
+  "tags": ["portfolio", "responsive", "design"]
+}

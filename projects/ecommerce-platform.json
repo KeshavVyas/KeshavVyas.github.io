@@ -1,0 +1,13 @@
+{
+  "title": "E-Commerce Platform",
+  "description": "A full-stack e-commerce application built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
+  "technologies": ["React", "Node.js", "MongoDB", "Stripe"],
+  "github": "https://github.com/keshavvyas/ecommerce-platform",
+  "live": "https://ecommerce-demo.com",
+  "icon": "fas fa-shopping-cart",
+  "featured": true,
+  "date": "2024-12-01",
+  "category": "web-app",
+  "image": "ecommerce-screenshot.jpg",
+  "tags": ["fullstack", "ecommerce", "payment"]
+}
