@@ -319,7 +319,7 @@ If you have any questions or need help with customization:
 
 - Create an issue on GitHub
 - Email: keshav.vyas@example.com
-- LinkedIn: [Keshav Vyas](https://linkedin.com/in/keshavvyas)
+- LinkedIn: [Keshav Vyas](https://www.linkedin.com/in/keshav-vyas-cs/)
 
 ## 🙏 Acknowledgments
 
